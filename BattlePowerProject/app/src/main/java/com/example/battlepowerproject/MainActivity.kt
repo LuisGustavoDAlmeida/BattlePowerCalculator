@@ -319,7 +319,7 @@ private fun MostrarPersonagem(poderLutaUsuario: String, lista: List<Personagem>)
 
     LazyColumn {
         lista.forEach { personagem ->
-            if (personagem.poderLuta < poderLutaUsuario.toInt()) {
+            if (personagem.poderLuta <= poderLutaUsuario.toInt()) {
                 item {
                     Column(
                         modifier = Modifier
@@ -334,7 +334,10 @@ private fun MostrarPersonagem(poderLutaUsuario: String, lista: List<Personagem>)
                             text = personagem.nome,
                             fontSize = 64.sp,
                             color = Color.White,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            minLines = 2,
+                            lineHeight = 64.sp,
+                            modifier = Modifier.fillMaxWidth(),
                         )
 
 
@@ -342,7 +345,7 @@ private fun MostrarPersonagem(poderLutaUsuario: String, lista: List<Personagem>)
                             text = "Poder: ${personagem.poderLuta}",
                             fontSize = 48.sp,
                             color = Color.White,
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
                         )
 
                         Spacer(modifier = Modifier.height(25.dp))
